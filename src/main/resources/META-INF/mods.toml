@@ -1,0 +1,31 @@
+modLoader = "javafml" #mandatory
+loaderVersion = "[43,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+license = "GNU GPL 3.0"
+
+[[mods]] #mandatory
+modId = "improvedhunger" #mandatory
+version = "${file.jarVersion}" #mandatory
+displayName = "Improved Hunger" #mandatory
+
+#updateJSONURL="https://change.me.example.invalid/updates.json" #optional
+displayURL = "https://www.curseforge.com/minecraft/mc-mods/improved-hunger" #optional
+#logoFile="improvedhunger.png" #optional
+#credits="Thanks for this example mod goes to Java" #optional
+authors = "ArcAios26" #optional
+description = '''
+improved hunger system
+'''
+
+[[dependencies.improvedhunger]] #optional
+modId = "forge" #mandatory
+mandatory = true #mandatory
+versionRange = "[43,)" #mandatory
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.improvedhunger]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.19.2,1.20)"
+ordering = "NONE"
+side = "BOTH"
