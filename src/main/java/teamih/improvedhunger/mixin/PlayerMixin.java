@@ -12,7 +12,7 @@ public class PlayerMixin {
     @ModifyVariable(method = "causeFoodExhaustion", at = @At("HEAD"))
     public float onCauseFoodExhaustion(float exhaustion) {
         int modifier = ConfigHandler.HUNGERDECAYMODIFIER.get();
-        //System.out.println(exhaustion * (modifier/100));
+
         return exhaustion * (modifier/100);
     }
 }
