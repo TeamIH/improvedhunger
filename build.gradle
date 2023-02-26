@@ -1,9 +1,20 @@
+buildscript {
+    repositories {
+        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+    }
+    dependencies {
+        classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
+    }
+}
+
 plugins {
     id 'eclipse'
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '5.1.+'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
+
+apply plugin: 'org.spongepowered.mixin'
 
 version = "${version}-${mc_version}"
 group = 'teamih.improvedhunger' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -86,6 +97,12 @@ minecraft {
     }
 }
 
+mixin {
+    add sourceSets.main, "improvedhunger.refmap.json"
+
+    config "improvedhunger.mixins.json"
+}
+
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
@@ -93,7 +110,8 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19.2-43.2.0'
+    minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
 }
 
