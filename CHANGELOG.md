@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.0.0 (2023-02-26)
+
+
+### Miscellaneous Chores
+
+* edit workflows ([5c08550](https://github.com/TeamIH/improvedhunger/commit/5c0855030f0bc9dfda628e139398cc29f6fb85db))
+
 ## [1.0.1](https://github.com/TeamIH/improvedhunger/compare/v1.0.0...v1.0.1) (2023-02-24)
 
 
