@@ -1,4 +1,12 @@
 
+<a name="v0.2.1-alpha"></a>
+## [v0.2.1-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.2.0-alpha...v0.2.1-alpha) (2023-02-26)
+
+### Fix
+
+* setting hunger decay below 100 resulted in no hunger loss
+
+
 <a name="v0.2.0-alpha"></a>
 ## [v0.2.0-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.1.0-alpha...v0.2.0-alpha) (2023-02-26)
 
