@@ -13,6 +13,6 @@ public class PlayerMixin {
     public float onCauseFoodExhaustion(float exhaustion) {
         int modifier = ConfigHandler.HUNGERDECAYMODIFIER.get();
 
-        return exhaustion * (modifier/100);
+        return exhaustion * ((float)modifier/100);
     }
 }

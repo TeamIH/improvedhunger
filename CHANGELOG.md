@@ -1,7 +1,25 @@
-# Changelog
 
-## [0.1.0-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.1.0...v0.1.0-alpha) (2023-02-26)
+<a name="v0.2.0-alpha"></a>
+## [v0.2.0-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.1.0-alpha...v0.2.0-alpha) (2023-02-26)
 
-### Features
+### Chore
 
-* implement scaling of hunger loss by a percentage from 0 to 200 percent ([ad27311](https://github.com/TeamIH/improvedhunger/commit/ad27311f86ec386e5adec0c8f9d516e51b081459))
+* remove release-please
+
+### Feat
+
+* implement constant hunger decay
+
+
+<a name="v0.1.0-alpha"></a>
+## v0.1.0-alpha (2023-02-26)
+
+### Chore
+
+* release 0.1.0-alpha
+* edit workflows
+
+### Feat
+
+* implement scaling of hunger loss by a percentage from 0 to 200 percent
+
