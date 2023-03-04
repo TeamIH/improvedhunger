@@ -1,4 +1,12 @@
 
+<a name="v0.3-alpha"></a>
+## [v0.3-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.2.1-alpha...v0.3-alpha) (2023-03-04)
+
+### Feat
+
+* Add custom consumption based on food hunger value
+
+
 <a name="v0.2.1-alpha"></a>
 ## [v0.2.1-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.2.0-alpha...v0.2.1-alpha) (2023-02-26)
 
