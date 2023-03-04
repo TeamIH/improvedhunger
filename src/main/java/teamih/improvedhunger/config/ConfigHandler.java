@@ -12,10 +12,15 @@ public class ConfigHandler {
     public static final String CATEGORY_HUNGER = "hunger";
 
     public static IntValue HUNGERDECAYMODIFIER;
+    public static IntValue CONSUMPTIONMODIFIER;
+
     public static DoubleValue CONSTANTHUNGER;
+
+    public static BooleanValue DEFAULTCONSUMPTION;
 
     static {
         setupHungerConfig();
+        setupConsumptionSpeed();
 
         SERVER_CONFIG = SERVER_BUILDER.build();
     }
@@ -33,5 +38,20 @@ public class ConfigHandler {
                 .defineInRange("constantHungerDecayAmount", 0.01, 0.0, 1.0);
 
         ConfigHandler.SERVER_BUILDER.pop();
+    }
+
+    private static void setupConsumptionSpeed() {
+
+        DEFAULTCONSUMPTION = ConfigHandler.SERVER_BUILDER
+                .comment("Use vanilla food consumption rates Default: False")
+                .define("vanillaConsumptionRate", false);
+
+        CONSUMPTIONMODIFIER = ConfigHandler.SERVER_BUILDER
+                .comment("Modifier value with consumption rate Default: 8")
+                .comment("Lower values produce faster consumption rates")
+                .comment("Consumption rate is also dependent on hunger restored")
+                .comment("Default value 8 hunger foods such as steak take a little over double the time to consume")
+                .comment("At max value 1 hunger foods will take as long as vanilla system")
+                .defineInRange("consumptionRateModifier", 8, 0, 16);
     }
 }

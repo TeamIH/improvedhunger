@@ -15,7 +15,9 @@ public class CommonProxy {
     }
 
     public void attachEventHandlers(IEventBus eventBus) {
+
         eventBus.addListener(ImprovedHungerEventHook::onLivingTick);
+
     }
 
     private void onCommonSetup(FMLCommonSetupEvent event) {

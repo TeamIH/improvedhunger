@@ -106,12 +106,16 @@ mixin {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-
+    maven { url "https://www.cursemaven.com" }
 }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+
+    runtimeOnly fg.deobf("curse.maven:farmersdelight-398521:3999157")
+    runtimeOnly fg.deobf("curse.maven:appleskin-248787:3872808")
+    runtimeOnly fg.deobf("curse.maven:nethersdelight-496394:3971576")
 
 }
 
