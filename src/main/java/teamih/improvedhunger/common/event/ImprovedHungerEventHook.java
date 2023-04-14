@@ -1,12 +1,12 @@
 package teamih.improvedhunger.common.event;
 
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.food.FoodData;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.food.Foods;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import teamih.improvedhunger.common.registry.EffectsRegistry;
 import teamih.improvedhunger.config.ConfigHandler;
+
 
 public class ImprovedHungerEventHook {
 
@@ -19,6 +19,18 @@ public class ImprovedHungerEventHook {
             if (!player.isCreative() && !player.isDeadOrDying()) player.causeFoodExhaustion(exhaustion.floatValue());
         }
 
+    }
+
+    public static void onItemUseFinish(LivingEntityUseItemEvent.Finish event) {
+        if (event.getItem().isEdible() && event.getEntity() instanceof Player) {
+            int min = ConfigHandler.WELLFEDMINHUNGER.get();
+            int hunger = event.getItem().getFoodProperties(null).getNutrition();
+            int duration = ((min * (hunger * hunger)) + (min * hunger) - ((min * (min * min)) + (min * min))) * 20;
+
+            if (duration > 0) {
+                event.getEntity().addEffect(new MobEffectInstance(EffectsRegistry.WELLFED_EFFECT.get(), duration));
+            }
+        }
     }
 
 }
