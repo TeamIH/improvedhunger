@@ -17,7 +17,7 @@ public class PlayerMixin {
             Double wellFedModifer = ConfigHandler.WELLFEDDECAYMODIFIER.get();
             modifier *= wellFedModifer.floatValue();
         }
-        
+
         return exhaustion * (modifier/100);
     }
 }
