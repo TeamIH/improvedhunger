@@ -1,4 +1,17 @@
 
+<a name="v0.4.0-alpha"></a>
+## [v0.4.0-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.3-alpha...v0.4.0-alpha) (2023-04-13)
+
+### Feat
+
+* add localized name for Well Fed
+* add well fed buff
+
+### Fix
+
+* fixed version number
+
+
 <a name="v0.3-alpha"></a>
 ## [v0.3-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.2.1-alpha...v0.3-alpha) (2023-03-04)
 
