@@ -157,11 +157,35 @@ public class ConfigHandler {
 
         FATIGUEDEBUFF = ConfigHandler.SERVER_BUILDER
                 .comment("Use hunger related mining fatigue debuff (Default: true)")
-                .define("useminingfatige", true);
+                .define("useminingfatigedebuff", true);
 
         FATIGUEHUNGER = ConfigHandler.SERVER_BUILDER
                 .comment("Maximum hunger level for mining fatigue to be applied (Default: 6)")
                 .defineInRange("fatiguemaximumhunger", 6, 0, 20);
+
+        ConfigHandler.SERVER_BUILDER.pop();
+
+        ConfigHandler.SERVER_BUILDER.comment("Slowness Debuff").push(SUBCATEGORY_SLOWNESS);
+
+        SLOWNESSDEBUFF = ConfigHandler.SERVER_BUILDER
+                .comment("Use hunger related slowness debuff (Default: true)")
+                .define("useslownessdebuff", true);
+
+        SLOWNESSHUNGER = ConfigHandler.SERVER_BUILDER
+                .comment("Maximum hunger level for slowness to be applied (Default: 4)")
+                .defineInRange("slownessmaximumhunger", 4, 0, 20);
+
+        ConfigHandler.SERVER_BUILDER.pop();
+
+        ConfigHandler.SERVER_BUILDER.comment("Weakness Debuff").push(SUBCATEGORY_WEAKNESS);
+
+        WEAKNESSDEBUFF = ConfigHandler.SERVER_BUILDER
+                .comment("User hunger related weakness debuff (Default: true)")
+                .define("userweaknessdebuff", true);
+
+        WEAKNESSHUNGER = ConfigHandler.SERVER_BUILDER
+                .comment("Maximum hunger level for weakness to be applied (Default: 2)")
+                .defineInRange("weaknessmaximumhunger", 2, 0, 20);
 
         ConfigHandler.SERVER_BUILDER.pop();
 
