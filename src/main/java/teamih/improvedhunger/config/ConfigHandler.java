@@ -11,12 +11,25 @@ public class ConfigHandler {
 
     public static final String CATEGORY_HUNGER = "hunger";
     public static final String CATEGORY_BUFFS = "buffs";
+    public static final String CATEGORY_DEBUFFS = "debuffs";
 
     public static final String SUBCATEGORY_WELLFED = "wellfed";
+    public static final String SUBCATEGORY_HASTE = "haste";
+    public static final String SUBCATEGORY_SPEED = "speed";
+    public static final String SUBCATEGORY_STRENGTH = "strength";
+    public static final String SUBCATEGORY_FATIGUE = "mining fatigue";
+    public static final String SUBCATEGORY_SLOWNESS = "slowness";
+    public static final String SUBCATEGORY_WEAKNESS = "weakness";
 
     public static IntValue HUNGERDECAYMODIFIER;
     public static IntValue CONSUMPTIONMODIFIER;
     public static IntValue WELLFEDMINHUNGER;
+    public static IntValue HASTEHUNGER;
+    public static IntValue SPEEDHUNGER;
+    public static IntValue STRENGTHHUNGER;
+    public static IntValue FATIGUEHUNGER;
+    public static IntValue SLOWNESSHUNGER;
+    public static IntValue WEAKNESSHUNGER;
 
 
     public static DoubleValue CONSTANTHUNGER;
@@ -24,6 +37,12 @@ public class ConfigHandler {
     public static DoubleValue WELLFEDDECAYMODIFIER;
 
     public static BooleanValue DEFAULTCONSUMPTION;
+    public static BooleanValue HASTEBUFF;
+    public static BooleanValue SPEEDBUFF;
+    public static BooleanValue STRENGTHBUFF;
+    public static BooleanValue FATIGUEDEBUFF;
+    public static BooleanValue SLOWNESSDEBUFF;
+    public static BooleanValue WEAKNESSDEBUFF;
 
     static {
         setupHungerConfig();
@@ -86,6 +105,42 @@ public class ConfigHandler {
                 .comment("Hunger decay multiplied by this modifier while under Well Fed buff")
                 .comment("NOTE: default halves the rate. 0 = no decay, 1 = normal decay")
                 .defineInRange("wellfedhungerdecay", 0.5, 0.0, 1.0);
+
+        ConfigHandler.SERVER_BUILDER.pop();
+
+        ConfigHandler.SERVER_BUILDER.comment("Haste Buff").push(SUBCATEGORY_HASTE);
+
+        HASTEBUFF = ConfigHandler.SERVER_BUILDER
+                .comment("Use hunger related haste buff (Default: true)")
+                .define("usehastebuff", true);
+
+        HASTEHUNGER = ConfigHandler.SERVER_BUILDER
+                .comment("Minimum hunger level for haste to be applied (Default: 14)")
+                .defineInRange("hasteminimumhunger", 14, 0, 20);
+
+        ConfigHandler.SERVER_BUILDER.pop();
+
+        ConfigHandler.SERVER_BUILDER.comment("Speed Buff").push(SUBCATEGORY_SPEED);
+
+        SPEEDBUFF = ConfigHandler.SERVER_BUILDER
+                .comment("Use hunger related speed buff (Default: true)")
+                .define("usespeedbuff", true);
+
+        SPEEDHUNGER = ConfigHandler.SERVER_BUILDER
+                .comment("Minimum hunger level for speed to be applied (Default: 16)")
+                .defineInRange("speedminimumhunger", 16, 0, 20);
+
+        ConfigHandler.SERVER_BUILDER.pop();
+
+        ConfigHandler.SERVER_BUILDER.comment("Strength Buff").push(SUBCATEGORY_STRENGTH);
+
+        STRENGTHBUFF = ConfigHandler.SERVER_BUILDER
+                .comment("Use hunger related strength buff (Default: true)")
+                .define("usestrengthbuff", true);
+
+        STRENGTHHUNGER = ConfigHandler.SERVER_BUILDER
+                .comment("Minimum hunger level for strength to be applied (Default: 18)")
+                .defineInRange("strengthminimumhunger", 18, 0, 20);
 
         ConfigHandler.SERVER_BUILDER.pop();
 
