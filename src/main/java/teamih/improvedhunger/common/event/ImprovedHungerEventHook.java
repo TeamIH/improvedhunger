@@ -3,6 +3,7 @@ package teamih.improvedhunger.common.event;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.block.BeaconBlock;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import teamih.improvedhunger.common.registry.EffectsRegistry;
@@ -22,10 +23,17 @@ public class ImprovedHungerEventHook {
             if (!player.isCreative()) {
                 if (ConfigHandler.HASTEBUFF.get()) {
                     if (player.getFoodData().getFoodLevel() >= ConfigHandler.HASTEHUNGER.get()) {
-                        if (!player.hasEffect(MobEffects.DIG_SPEED) || player.getEffect(MobEffects.DIG_SPEED).getDuration() < 140) player.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 220, 0));
+                        if (!player.hasEffect(MobEffects.DIG_SPEED) || player.getEffect(MobEffects.DIG_SPEED).getDuration() < 140) player.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 220, 0, true, true));
+                    }
+                }
+
+                if (ConfigHandler.SPEEDBUFF.get()) {
+                    if (player.getFoodData().getFoodLevel() >= ConfigHandler.SPEEDHUNGER.get()) {
+                        if (!player.hasEffect(MobEffects.MOVEMENT_SPEED) || player.getEffect(MobEffects.MOVEMENT_SPEED).getDuration() < 140) player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 220, 0, true, true));
                     }
                 }
             }
+
 
         }
 
