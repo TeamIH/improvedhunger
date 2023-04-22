@@ -38,7 +38,12 @@ public class ImprovedHungerEventHook {
                         if (!player.hasEffect(MobEffects.DAMAGE_BOOST) || player.getEffect(MobEffects.DAMAGE_BOOST).getDuration() < 140) player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 220, 0, true, true));
                     }
                 }
-                
+
+                if (ConfigHandler.FATIGUEDEBUFF.get()) {
+                    if (player.getFoodData().getFoodLevel() <= ConfigHandler.FATIGUEHUNGER.get()) {
+                        if (!player.hasEffect(MobEffects.DIG_SLOWDOWN) || player.getEffect(MobEffects.DIG_SLOWDOWN).getDuration() < 140) player.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 220, 0, true, true));
+                    }
+                }
             }
 
 

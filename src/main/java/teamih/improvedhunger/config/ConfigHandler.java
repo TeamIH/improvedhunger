@@ -47,6 +47,7 @@ public class ConfigHandler {
     static {
         setupHungerConfig();
         setupBuffConfig();
+        setupDebuffConfig();
 
         SERVER_CONFIG = SERVER_BUILDER.build();
     }
@@ -146,5 +147,24 @@ public class ConfigHandler {
 
         ConfigHandler.SERVER_BUILDER.pop();
 
+    }
+
+    private static void setupDebuffConfig() {
+
+        ConfigHandler.SERVER_BUILDER.comment("Debuff Settings").push(CATEGORY_DEBUFFS);
+
+        ConfigHandler.SERVER_BUILDER.comment("Mining Fatigue Debuff").push(SUBCATEGORY_FATIGUE);
+
+        FATIGUEDEBUFF = ConfigHandler.SERVER_BUILDER
+                .comment("Use hunger related mining fatigue debuff (Default: true)")
+                .define("useminingfatige", true);
+
+        FATIGUEHUNGER = ConfigHandler.SERVER_BUILDER
+                .comment("Maximum hunger level for mining fatigue to be applied (Default: 6)")
+                .defineInRange("fatiguemaximumhunger", 6, 0, 20);
+
+        ConfigHandler.SERVER_BUILDER.pop();
+
+        ConfigHandler.SERVER_BUILDER.pop();
     }
 }
