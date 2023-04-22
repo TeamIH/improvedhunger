@@ -1,4 +1,24 @@
 
+<a name="v0.5.0-alpha"></a>
+## [v0.5.0-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.4.0-alpha...v0.5.0-alpha) (2023-04-22)
+
+### Chore
+
+* bump version number
+
+### Feat
+
+* add hunger level debuff - slowness and weakness
+* add hunger level debuff - mining fatigue
+* add hunger level buff - strength
+* add hunger level buff - speed
+* add hunger level buff - haste
+
+### Fix
+
+* tweak buff default levels
+
+
 <a name="v0.4.0-alpha"></a>
 ## [v0.4.0-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.3-alpha...v0.4.0-alpha) (2023-04-13)
 
