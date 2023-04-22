@@ -116,8 +116,8 @@ public class ConfigHandler {
                 .define("usehastebuff", true);
 
         HASTEHUNGER = ConfigHandler.SERVER_BUILDER
-                .comment("Minimum hunger level for haste to be applied (Default: 14)")
-                .defineInRange("hasteminimumhunger", 14, 0, 20);
+                .comment("Minimum hunger level for haste to be applied (Default: 11)")
+                .defineInRange("hasteminimumhunger", 11, 0, 20);
 
         ConfigHandler.SERVER_BUILDER.pop();
 
@@ -128,8 +128,8 @@ public class ConfigHandler {
                 .define("usespeedbuff", true);
 
         SPEEDHUNGER = ConfigHandler.SERVER_BUILDER
-                .comment("Minimum hunger level for speed to be applied (Default: 16)")
-                .defineInRange("speedminimumhunger", 16, 0, 20);
+                .comment("Minimum hunger level for speed to be applied (Default: 15)")
+                .defineInRange("speedminimumhunger", 15, 0, 20);
 
         ConfigHandler.SERVER_BUILDER.pop();
 
@@ -160,8 +160,8 @@ public class ConfigHandler {
                 .define("useminingfatigedebuff", true);
 
         FATIGUEHUNGER = ConfigHandler.SERVER_BUILDER
-                .comment("Maximum hunger level for mining fatigue to be applied (Default: 6)")
-                .defineInRange("fatiguemaximumhunger", 6, 0, 20);
+                .comment("Maximum hunger level for mining fatigue to be applied (Default: 9)")
+                .defineInRange("fatiguemaximumhunger", 9, 0, 20);
 
         ConfigHandler.SERVER_BUILDER.pop();
 
@@ -172,8 +172,8 @@ public class ConfigHandler {
                 .define("useslownessdebuff", true);
 
         SLOWNESSHUNGER = ConfigHandler.SERVER_BUILDER
-                .comment("Maximum hunger level for slowness to be applied (Default: 4)")
-                .defineInRange("slownessmaximumhunger", 4, 0, 20);
+                .comment("Maximum hunger level for slowness to be applied (Default: 6)")
+                .defineInRange("slownessmaximumhunger", 6, 0, 20);
 
         ConfigHandler.SERVER_BUILDER.pop();
 
@@ -184,8 +184,8 @@ public class ConfigHandler {
                 .define("userweaknessdebuff", true);
 
         WEAKNESSHUNGER = ConfigHandler.SERVER_BUILDER
-                .comment("Maximum hunger level for weakness to be applied (Default: 2)")
-                .defineInRange("weaknessmaximumhunger", 2, 0, 20);
+                .comment("Maximum hunger level for weakness to be applied (Default: 3)")
+                .defineInRange("weaknessmaximumhunger", 3, 0, 20);
 
         ConfigHandler.SERVER_BUILDER.pop();
 
