@@ -68,10 +68,20 @@ public class ImprovedHungerEventHook {
         if (event.getItem().isEdible() && event.getEntity() instanceof Player) {
             int min = ConfigHandler.WELLFEDMINHUNGER.get();
             int hunger = event.getItem().getFoodProperties(null).getNutrition();
-            int duration = ((min * (hunger * hunger)) + (min * hunger) - ((min * (min * min)) + (min * min))) * 20;
+            int wellfedDuration = ((min * (hunger * hunger)) + (min * hunger) - ((min * (min * min)) + (min * min))) * 20;
 
-            if (duration > 0) {
-                event.getEntity().addEffect(new MobEffectInstance(EffectsRegistry.WELLFED_EFFECT.get(), duration));
+            if (wellfedDuration > 0) {
+                event.getEntity().addEffect(new MobEffectInstance(EffectsRegistry.WELLFED_EFFECT.get(), wellfedDuration));
+            }
+
+            if (hunger > ConfigHandler.ABSORBMINHUNGER.get()) {
+                int absorbDuration = (int) Math.round(wellfedDuration * ConfigHandler.ABSORBDURATIONMODIFIER.get());
+                if (absorbDuration > 0) {
+                    float saturation = hunger * event.getItem().getFoodProperties(null).getSaturationModifier() * 2;
+                    int absorbLevel = (int) Math.ceil(saturation/3) - 1;
+                    System.out.println(absorbLevel);
+                    event.getEntity().addEffect(new MobEffectInstance(MobEffects.ABSORPTION, absorbDuration, absorbLevel));
+                }
             }
         }
     }

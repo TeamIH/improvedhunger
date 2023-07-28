@@ -14,6 +14,7 @@ public class ConfigHandler {
     public static final String CATEGORY_DEBUFFS = "debuffs";
 
     public static final String SUBCATEGORY_WELLFED = "wellfed";
+    public static final String SUBCATEGORY_ABSORB = "absorb";
     public static final String SUBCATEGORY_HASTE = "haste";
     public static final String SUBCATEGORY_SPEED = "speed";
     public static final String SUBCATEGORY_STRENGTH = "strength";
@@ -24,6 +25,7 @@ public class ConfigHandler {
     public static IntValue HUNGERDECAYMODIFIER;
     public static IntValue CONSUMPTIONMODIFIER;
     public static IntValue WELLFEDMINHUNGER;
+    public static IntValue ABSORBMINHUNGER;
     public static IntValue HASTEHUNGER;
     public static IntValue SPEEDHUNGER;
     public static IntValue STRENGTHHUNGER;
@@ -35,7 +37,7 @@ public class ConfigHandler {
     public static DoubleValue CONSTANTHUNGER;
     public static DoubleValue WELLFEDHEALING;
     public static DoubleValue WELLFEDDECAYMODIFIER;
-
+    public static DoubleValue ABSORBDURATIONMODIFIER;
     public static BooleanValue DEFAULTCONSUMPTION;
     public static BooleanValue HASTEBUFF;
     public static BooleanValue SPEEDBUFF;
@@ -106,6 +108,21 @@ public class ConfigHandler {
                 .comment("Hunger decay multiplied by this modifier while under Well Fed buff")
                 .comment("NOTE: default halves the rate. 0 = no decay, 1 = normal decay")
                 .defineInRange("wellfedhungerdecay", 0.5, 0.0, 1.0);
+
+        ConfigHandler.SERVER_BUILDER.pop();
+
+        ConfigHandler.SERVER_BUILDER.comment("Absorption Buff").push(SUBCATEGORY_ABSORB);
+
+        ABSORBMINHUNGER = ConfigHandler.SERVER_BUILDER
+                .comment("Minimum hunger value (Default: 4)")
+                .comment("NOTE: the buff is not applied for foods of the minimum hunger restored and less")
+                .defineInRange("absorbminimumhunger", 4, 3, 6);
+
+        ABSORBDURATIONMODIFIER = ConfigHandler.SERVER_BUILDER
+                .comment("Absorb buff duration modifier (Default: 0.75)")
+                .comment("Duration set to Wellfed duration x modifier.")
+                .comment("NOTE: default sets duration to 75% of well fed. 0 = no absorb, 1 = same duration as well fed)")
+                .defineInRange("absorbdurationmodifier", 0.75, 0.0, 1.0);
 
         ConfigHandler.SERVER_BUILDER.pop();
 
