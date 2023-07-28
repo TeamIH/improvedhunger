@@ -15,6 +15,7 @@ public class ConfigHandler {
 
     public static final String SUBCATEGORY_WELLFED = "wellfed";
     public static final String SUBCATEGORY_ABSORB = "absorb";
+    public static final String SUBCATEGORY_RESISTANCE = "resistance";
     public static final String SUBCATEGORY_HASTE = "haste";
     public static final String SUBCATEGORY_SPEED = "speed";
     public static final String SUBCATEGORY_STRENGTH = "strength";
@@ -26,6 +27,7 @@ public class ConfigHandler {
     public static IntValue CONSUMPTIONMODIFIER;
     public static IntValue WELLFEDMINHUNGER;
     public static IntValue ABSORBMINHUNGER;
+    public static IntValue RESISTANCEMINHUNGER;
     public static IntValue HASTEHUNGER;
     public static IntValue SPEEDHUNGER;
     public static IntValue STRENGTHHUNGER;
@@ -38,6 +40,7 @@ public class ConfigHandler {
     public static DoubleValue WELLFEDHEALING;
     public static DoubleValue WELLFEDDECAYMODIFIER;
     public static DoubleValue ABSORBDURATIONMODIFIER;
+    public static DoubleValue RESISTANCEDURATIONMODIFIER;
     public static BooleanValue DEFAULTCONSUMPTION;
     public static BooleanValue HASTEBUFF;
     public static BooleanValue SPEEDBUFF;
@@ -115,14 +118,27 @@ public class ConfigHandler {
 
         ABSORBMINHUNGER = ConfigHandler.SERVER_BUILDER
                 .comment("Minimum hunger value (Default: 4)")
-                .comment("NOTE: the buff is not applied for foods of the minimum hunger restored and less")
-                .defineInRange("absorbminimumhunger", 4, 3, 6);
+                .defineInRange("absorbminimumhunger", 5, 2, 8);
 
         ABSORBDURATIONMODIFIER = ConfigHandler.SERVER_BUILDER
                 .comment("Absorb buff duration modifier (Default: 0.75)")
                 .comment("Duration set to Wellfed duration x modifier.")
                 .comment("NOTE: default sets duration to 75% of well fed. 0 = no absorb, 1 = same duration as well fed)")
                 .defineInRange("absorbdurationmodifier", 0.75, 0.0, 1.0);
+
+        ConfigHandler.SERVER_BUILDER.pop();
+
+        ConfigHandler.SERVER_BUILDER.push("Resistance Buff").push(SUBCATEGORY_RESISTANCE);
+
+        RESISTANCEMINHUNGER = ConfigHandler.SERVER_BUILDER
+                .comment("Minimum hunger value (Default: 4)")
+                .defineInRange("resistanceminimumhunger", 5, 2, 8);
+
+        RESISTANCEDURATIONMODIFIER = ConfigHandler.SERVER_BUILDER
+                .comment("Resistance buff duration modifier (Default: 0.75)")
+                .comment("Duration set to Absorption duration x modifier.")
+                .comment("NOTE: default sets duration to 75% of absorption buff. 0 = no resistance, 1 = same duration as absorption)")
+                .defineInRange("resistancedurationmodifier", 0.75, 0.0, 1.0);
 
         ConfigHandler.SERVER_BUILDER.pop();
 

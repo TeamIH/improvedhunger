@@ -66,21 +66,30 @@ public class ImprovedHungerEventHook {
 
     public static void onItemUseFinish(LivingEntityUseItemEvent.Finish event) {
         if (event.getItem().isEdible() && event.getEntity() instanceof Player) {
-            int min = ConfigHandler.WELLFEDMINHUNGER.get();
+            int minWellFedHunger = ConfigHandler.WELLFEDMINHUNGER.get();
+            int minAbsorbHunger = ConfigHandler.ABSORBMINHUNGER.get();
+            int minResistanceHunger = ConfigHandler.RESISTANCEMINHUNGER.get();
             int hunger = event.getItem().getFoodProperties(null).getNutrition();
-            int wellfedDuration = ((min * (hunger * hunger)) + (min * hunger) - ((min * (min * min)) + (min * min))) * 20;
+            int wellfedDuration = ((minWellFedHunger * (hunger * hunger)) + (minWellFedHunger * hunger) - ((minWellFedHunger * (minWellFedHunger * minWellFedHunger)) + (minWellFedHunger * minWellFedHunger))) * 20;
+            int absorbDuration = (int) Math.round(wellfedDuration * ConfigHandler.ABSORBDURATIONMODIFIER.get());
+            int resistanceDuration = (int) Math.round(absorbDuration * ConfigHandler.RESISTANCEDURATIONMODIFIER.get());
 
             if (wellfedDuration > 0) {
                 event.getEntity().addEffect(new MobEffectInstance(EffectsRegistry.WELLFED_EFFECT.get(), wellfedDuration));
             }
 
-            if (hunger > ConfigHandler.ABSORBMINHUNGER.get()) {
-                int absorbDuration = (int) Math.round(wellfedDuration * ConfigHandler.ABSORBDURATIONMODIFIER.get());
+            if (hunger >= minAbsorbHunger) {
                 if (absorbDuration > 0) {
                     float saturation = hunger * event.getItem().getFoodProperties(null).getSaturationModifier() * 2;
-                    int absorbLevel = (int) Math.ceil(saturation/3) - 1;
-                    System.out.println(absorbLevel);
-                    event.getEntity().addEffect(new MobEffectInstance(MobEffects.ABSORPTION, absorbDuration, absorbLevel));
+                    int absorbLevel = (int) Math.ceil(saturation/minAbsorbHunger) - 1;
+                    event.getEntity().addEffect(new MobEffectInstance(MobEffects.ABSORPTION, absorbDuration, absorbLevel, true, true));
+                }
+            }
+
+            if (hunger >= minResistanceHunger) {
+                if (resistanceDuration > 0) {
+                    int resistanceLevel = (int) Math.floor(hunger/minResistanceHunger);
+                    event.getEntity().addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, resistanceDuration, resistanceLevel, true, true));
                 }
             }
         }
