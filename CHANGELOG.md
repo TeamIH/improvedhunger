@@ -1,4 +1,17 @@
 
+<a name="v0.6.0-alpha"></a>
+## [v0.6.0-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.5.0-alpha...v0.6.0-alpha) (2023-07-27)
+
+### Chore
+
+* update version number
+
+### Feat
+
+* add Resistance buff to food eaten
+* add Absorption buff to food eaten
+
+
 <a name="v0.5.0-alpha"></a>
 ## [v0.5.0-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.4.0-alpha...v0.5.0-alpha) (2023-04-22)
 

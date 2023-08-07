@@ -128,7 +128,7 @@ public class ConfigHandler {
 
         ConfigHandler.SERVER_BUILDER.pop();
 
-        ConfigHandler.SERVER_BUILDER.push("Resistance Buff").push(SUBCATEGORY_RESISTANCE);
+        ConfigHandler.SERVER_BUILDER.comment("Resistance Buff").push(SUBCATEGORY_RESISTANCE);
 
         RESISTANCEMINHUNGER = ConfigHandler.SERVER_BUILDER
                 .comment("Minimum hunger value (Default: 4)")
