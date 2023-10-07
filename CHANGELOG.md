@@ -1,6 +1,18 @@
 
+<a name="v0.6.1-alpha"></a>
+## [v0.6.1-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.6.0-alpha...v0.6.1-alpha)
+
+> 2023-08-06
+
+### Fix
+
+* fixed messed up settings tab for resistance buff
+
+
 <a name="v0.6.0-alpha"></a>
-## [v0.6.0-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.5.0-alpha...v0.6.0-alpha) (2023-07-27)
+## [v0.6.0-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.5.0-alpha...v0.6.0-alpha)
+
+> 2023-07-27
 
 ### Chore
 
@@ -13,7 +25,9 @@
 
 
 <a name="v0.5.0-alpha"></a>
-## [v0.5.0-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.4.0-alpha...v0.5.0-alpha) (2023-04-22)
+## [v0.5.0-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.4.0-alpha...v0.5.0-alpha)
+
+> 2023-04-22
 
 ### Chore
 
@@ -33,7 +47,9 @@
 
 
 <a name="v0.4.0-alpha"></a>
-## [v0.4.0-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.3-alpha...v0.4.0-alpha) (2023-04-13)
+## [v0.4.0-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.3-alpha...v0.4.0-alpha)
+
+> 2023-04-13
 
 ### Feat
 
@@ -46,7 +62,9 @@
 
 
 <a name="v0.3-alpha"></a>
-## [v0.3-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.2.1-alpha...v0.3-alpha) (2023-03-04)
+## [v0.3-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.2.1-alpha...v0.3-alpha)
+
+> 2023-03-04
 
 ### Feat
 
@@ -54,7 +72,9 @@
 
 
 <a name="v0.2.1-alpha"></a>
-## [v0.2.1-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.2.0-alpha...v0.2.1-alpha) (2023-02-26)
+## [v0.2.1-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.2.0-alpha...v0.2.1-alpha)
+
+> 2023-02-26
 
 ### Fix
 
@@ -62,7 +82,9 @@
 
 
 <a name="v0.2.0-alpha"></a>
-## [v0.2.0-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.1.0-alpha...v0.2.0-alpha) (2023-02-26)
+## [v0.2.0-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.1.0-alpha...v0.2.0-alpha)
+
+> 2023-02-26
 
 ### Chore
 
@@ -74,12 +96,17 @@
 
 
 <a name="v0.1.0-alpha"></a>
-## v0.1.0-alpha (2023-02-26)
+## v0.1.0-alpha
+
+> 2023-02-26
 
 ### Chore
 
 * release 0.1.0-alpha
 * edit workflows
+* **main:** release 0.1.0-alpha ([#3](https://github.com/TeamIH/improvedhunger/issues/3))
+* **main:** release 0.1.0 ([#2](https://github.com/TeamIH/improvedhunger/issues/2))
+* **main:** release 0.0.0 ([#1](https://github.com/TeamIH/improvedhunger/issues/1))
 
 ### Feat
 
