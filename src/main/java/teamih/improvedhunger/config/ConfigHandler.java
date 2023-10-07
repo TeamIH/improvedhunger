@@ -63,6 +63,7 @@ public class ConfigHandler {
 
         HUNGERDECAYMODIFIER = ConfigHandler.SERVER_BUILDER
                 .comment("Hunger decay modifier % Default: 100")
+                .comment("Scales all hunger decay by a percentage from 0% to 200%")
                 .defineInRange("hungerDecayModifier", 100, 0, 200);
 
         CONSTANTHUNGER = ConfigHandler.SERVER_BUILDER
