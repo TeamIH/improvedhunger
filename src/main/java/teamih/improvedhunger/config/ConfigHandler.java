@@ -104,7 +104,7 @@ public class ConfigHandler {
                 .comment("")
                 .comment("The curve rewards an exponentially longer buff for more filling food.")
                 .comment("NOTE: the buff is not applied for foods of the minimum hunger restored and less")
-                .defineInRange("wellfedminimumhunger", 2, 1, 4);
+                .defineInRange("wellfedminimumhunger", 2, 1, 20);
 
         WELLFEDDECAYMODIFIER = ConfigHandler.SERVER_BUILDER
                 .comment("Well fed buff hunger decay modifier (Default: 0.5)")
