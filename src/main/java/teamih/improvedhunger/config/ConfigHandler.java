@@ -102,6 +102,7 @@ public class ConfigHandler {
         BUFFDURATION = ConfigHandler.SERVER_BUILDER
                 .comment("Buff Duration (Default: 30)")
                 .comment("Duration in seconds, Min 15 Max 120")
+                .comment("Effects duration of Haste, Speed, and Strength buffs")
                 .defineInRange("buffduration", 30, 15, 120);
 
         ConfigHandler.SERVER_BUILDER.comment("Well Fed Buff").push(SUBCATEGORY_WELLFED);
@@ -205,6 +206,7 @@ public class ConfigHandler {
         DEBUFFDURATION = ConfigHandler.SERVER_BUILDER
                 .comment("Debuff Duration (Default: 30)")
                 .comment("Duration in seconds. Min 15 Max 120")
+                .comment("Effects duration of Fatigue, Slowness, and Weakness")
                 .defineInRange("debuffduration", 30, 15, 120);
 
         ConfigHandler.SERVER_BUILDER.pop();
