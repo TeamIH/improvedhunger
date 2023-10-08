@@ -1,9 +1,9 @@
 package teamih.improvedhunger.common.event;
 
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.block.BeaconBlock;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import teamih.improvedhunger.common.registry.EffectsRegistry;
@@ -17,43 +17,44 @@ public class ImprovedHungerEventHook {
         if (event.getEntity() instanceof Player) {
             Double exhaustion = ConfigHandler.CONSTANTHUNGER.get();
             Player player = (Player) event.getEntity();
+            int foodLevel = player.getFoodData().getFoodLevel();
 
             if (!player.isCreative() && !player.isDeadOrDying()) player.causeFoodExhaustion(exhaustion.floatValue());
 
             if (!player.isCreative()) {
                 if (ConfigHandler.HASTEBUFF.get()) {
-                    if (player.getFoodData().getFoodLevel() >= ConfigHandler.HASTEHUNGER.get()) {
-                        if (!player.hasEffect(MobEffects.DIG_SPEED) || player.getEffect(MobEffects.DIG_SPEED).getDuration() < 140) player.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 220, 0, true, true));
+                    if (foodLevel >= ConfigHandler.HASTEHUNGER.get()) {
+                        addBuff(MobEffects.DIG_SPEED, player);
                     }
                 }
 
                 if (ConfigHandler.SPEEDBUFF.get()) {
-                    if (player.getFoodData().getFoodLevel() >= ConfigHandler.SPEEDHUNGER.get()) {
-                        if (!player.hasEffect(MobEffects.MOVEMENT_SPEED) || player.getEffect(MobEffects.MOVEMENT_SPEED).getDuration() < 140) player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 220, 0, true, true));
+                    if (foodLevel >= ConfigHandler.SPEEDHUNGER.get()) {
+                        addBuff(MobEffects.MOVEMENT_SPEED, player);
                     }
                 }
 
                 if (ConfigHandler.STRENGTHBUFF.get()) {
-                    if (player.getFoodData().getFoodLevel() >= ConfigHandler.STRENGTHHUNGER.get()) {
-                        if (!player.hasEffect(MobEffects.DAMAGE_BOOST) || player.getEffect(MobEffects.DAMAGE_BOOST).getDuration() < 140) player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 220, 0, true, true));
+                    if (foodLevel >= ConfigHandler.STRENGTHHUNGER.get()) {
+                        addBuff(MobEffects.DAMAGE_BOOST, player);
                     }
                 }
 
                 if (ConfigHandler.FATIGUEDEBUFF.get()) {
-                    if (player.getFoodData().getFoodLevel() <= ConfigHandler.FATIGUEHUNGER.get()) {
-                        if (!player.hasEffect(MobEffects.DIG_SLOWDOWN) || player.getEffect(MobEffects.DIG_SLOWDOWN).getDuration() < 140) player.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 220, 0, true, true));
+                    if (foodLevel <= ConfigHandler.FATIGUEHUNGER.get()) {
+                        addDebuff(MobEffects.DIG_SLOWDOWN, player);
                     }
                 }
 
                 if (ConfigHandler.SLOWNESSDEBUFF.get()) {
-                    if (player.getFoodData().getFoodLevel() <= ConfigHandler.SLOWNESSHUNGER.get()) {
-                        if (!player.hasEffect(MobEffects.MOVEMENT_SLOWDOWN) || player.getEffect(MobEffects.MOVEMENT_SLOWDOWN).getDuration() < 140) player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 220, 0, true, true));
+                    if (foodLevel <= ConfigHandler.SLOWNESSHUNGER.get()) {
+                        addDebuff(MobEffects.MOVEMENT_SLOWDOWN, player);
                     }
                 }
 
                 if (ConfigHandler.WEAKNESSDEBUFF.get()) {
-                    if (player.getFoodData().getFoodLevel() <= ConfigHandler.WEAKNESSHUNGER.get()) {
-                        if (!player.hasEffect(MobEffects.WEAKNESS) || player.getEffect(MobEffects.WEAKNESS).getDuration() < 140) player.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 220, 0, true, true));
+                    if (foodLevel <= ConfigHandler.WEAKNESSHUNGER.get()) {
+                        addDebuff(MobEffects.WEAKNESS, player);
                     }
                 }
             }
@@ -92,6 +93,29 @@ public class ImprovedHungerEventHook {
                     event.getEntity().addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, resistanceDuration, resistanceLevel, true, true));
                 }
             }
+        }
+    }
+
+    private static void addDebuff(MobEffect effect, Player player) {
+
+        if (!player.hasEffect(effect)) {
+            int duration = ConfigHandler.DEBUFFDURATION.get() * 20;
+            player.addEffect(new MobEffectInstance(effect, duration, 0, true, true));
+        } else if (player.getEffect(effect).getDuration() < 20) {
+            int amp = player.getEffect(effect).getAmplifier();
+            if (amp < ConfigHandler.DEBUFFLEVEL.get() - 1) {
+                ++amp;
+            }
+            int duration = (ConfigHandler.DEBUFFDURATION.get() * 20) * (amp + 1);
+            player.addEffect(new MobEffectInstance(effect, duration , amp, true, true));
+        }
+
+    }
+
+    private static void addBuff(MobEffect effect, Player player) {
+        if (!player.hasEffect(effect) || player.getEffect(effect).getDuration() < 20) {
+            int duration = ConfigHandler.DEBUFFDURATION.get() * 20;
+            player.addEffect(new MobEffectInstance(effect, duration, 0, true, true));
         }
     }
 

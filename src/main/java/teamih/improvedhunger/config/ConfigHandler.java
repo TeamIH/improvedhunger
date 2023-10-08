@@ -22,6 +22,9 @@ public class ConfigHandler {
     public static final String SUBCATEGORY_FATIGUE = "mining fatigue";
     public static final String SUBCATEGORY_SLOWNESS = "slowness";
     public static final String SUBCATEGORY_WEAKNESS = "weakness";
+    public static final String SUBCATEGORY_LEVEL = "debufflevel";
+    public static final String SUBCATEGORY_DEBUFFDURATION = "debuffduration";
+    public static final String SUBCATEGORY_BUFFDURATION = "buffduration";
 
     public static IntValue HUNGERDECAYMODIFIER;
     public static IntValue CONSUMPTIONMODIFIER;
@@ -34,6 +37,9 @@ public class ConfigHandler {
     public static IntValue FATIGUEHUNGER;
     public static IntValue SLOWNESSHUNGER;
     public static IntValue WEAKNESSHUNGER;
+    public static IntValue DEBUFFLEVEL;
+    public static IntValue DEBUFFDURATION;
+    public static IntValue BUFFDURATION;
 
 
     public static DoubleValue CONSTANTHUNGER;
@@ -90,6 +96,13 @@ public class ConfigHandler {
     private static void setupBuffConfig() {
 
         ConfigHandler.SERVER_BUILDER.comment("Buff settings").push(CATEGORY_BUFFS);
+
+        ConfigHandler.SERVER_BUILDER.comment("Buff Duration").push(SUBCATEGORY_BUFFDURATION);
+
+        BUFFDURATION = ConfigHandler.SERVER_BUILDER
+                .comment("Buff Duration (Default: 30)")
+                .comment("Duration in seconds, Min 15 Max 120")
+                .defineInRange("buffduration", 30, 15, 120);
 
         ConfigHandler.SERVER_BUILDER.comment("Well Fed Buff").push(SUBCATEGORY_WELLFED);
 
@@ -186,6 +199,24 @@ public class ConfigHandler {
     private static void setupDebuffConfig() {
 
         ConfigHandler.SERVER_BUILDER.comment("Debuff Settings").push(CATEGORY_DEBUFFS);
+
+        ConfigHandler.SERVER_BUILDER.comment("Debuff Duration").push(SUBCATEGORY_DEBUFFDURATION);
+
+        DEBUFFDURATION = ConfigHandler.SERVER_BUILDER
+                .comment("Debuff Duration (Default: 30)")
+                .comment("Duration in seconds. Min 15 Max 120")
+                .defineInRange("debuffduration", 30, 15, 120);
+
+        ConfigHandler.SERVER_BUILDER.pop();
+
+        ConfigHandler.SERVER_BUILDER.comment("Debuff Max Level").push(SUBCATEGORY_LEVEL);
+
+        DEBUFFLEVEL = ConfigHandler.SERVER_BUILDER
+                .comment("Debuff Max Level (Default: 1)")
+                .comment("Sets the maximum level of the debuffs")
+                .defineInRange("debufflevel", 1, 1, 3);
+
+        ConfigHandler.SERVER_BUILDER.pop();
 
         ConfigHandler.SERVER_BUILDER.comment("Mining Fatigue Debuff").push(SUBCATEGORY_FATIGUE);
 
