@@ -1,4 +1,24 @@
 
+<a name="v0.7.0-alpha"></a>
+## [v0.7.0-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.6.1-alpha...v0.7.0-alpha)
+
+> 2023-10-07
+
+### Chore
+
+* update version number
+* add description comment to hunger decay modifier in config
+
+### Feat
+
+* expand debuff levels from 1 to a configured range of 1 to 3
+* increased well fed min hunger range from 1-4 to 1-20
+
+### Fix
+
+* added comments to clarify a few config options
+
+
 <a name="v0.6.1-alpha"></a>
 ## [v0.6.1-alpha](https://github.com/TeamIH/improvedhunger/compare/v0.6.0-alpha...v0.6.1-alpha)
 
